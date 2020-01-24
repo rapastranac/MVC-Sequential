@@ -6,10 +6,19 @@ std::vector<int> MVC(ParGreedy & graph, std::vector<int>& Visited, int depth, in
 		//mtx.lock();
 		if (leaves == 0) {
 			MVCSize = Visited.size();
+			leaves++;
+			//mtx.unlock();
+			return Visited;	/*Terminal case*/
 		}
-		leaves++;
-		//mtx.unlock();
-		return Visited;	/*Terminal case*/
+		else {
+			if (Visited.size() < MVCSize)
+			{
+				MVCSize = Visited.size();
+			}
+			leaves++;
+			//mtx.unlock();
+			return Visited;	/*Terminal case*/
+		}
 	}
 
 	//-------------
